@@ -1,0 +1,50 @@
+Análise dos Requisitos:
+
+Clientes: Laptops em rede local com acesso à internet, localizados em duas cidades.
+Usuários: Até 50, com autenticação SSO.
+Aplicações: Banco de dados relacional em EC2, aplicações Lambda para interface com CRM, aplicação web para CRM.
+Requisitos não funcionais: Alta disponibilidade e escalabilidade de dados.
+Proposta de Arquitetura:
+
+Com base nos requisitos, proponho a seguinte arquitetura:
+https://edurev.in/t/132660/Amazon-Web-Services-Basic-Architecture
+
+basic AWS architecture diagram for the given requirements
+
+Componentes e Justificativas:
+
+VPC: Uma VPC privada para isolar os recursos da AWS da internet pública.
+Sub-redes públicas e privadas: Sub-redes públicas para os gateways de internet e sub-redes privadas para os demais recursos.
+Internet Gateway: Permite o acesso à internet para os recursos da sub-rede pública.
+NAT Gateway: Permite que os recursos da sub-rede privada se conectem à internet para obter atualizações e acessar serviços externos.
+Load Balancer: Distribui o tráfego entre múltiplas instâncias EC2, garantindo alta disponibilidade e escalabilidade.
+Auto Scaling: Aumenta ou diminui automaticamente o número de instâncias EC2 com base na demanda.
+RDS: Banco de dados relacional gerenciado pela AWS, com opções de replicação para alta disponibilidade.
+Lambda: Funções sem servidor para executar as aplicações que interagem com o CRM.
+API Gateway: Cria uma API RESTful para acessar as funções Lambda de forma segura e escalável.
+S3: Armazenamento de objetos para backups e arquivos estáticos.
+IAM: Gerencia as identidades e as permissões de acesso aos recursos da AWS.
+Security Groups: Controlam o tráfego de entrada e saída para as instâncias EC2.
+Fluxo:
+
+Acesso: Os clientes acessam a aplicação web através de seus laptops.
+Load Balancer: Distribui o tráfego para as instâncias EC2 que hospedam a aplicação web.
+API Gateway: Recebe as requisições e as encaminha para as funções Lambda.
+Lambda: Interage com o banco de dados RDS para realizar as operações necessárias e retorna a resposta para o cliente.
+Considerações:
+
+Alta Disponibilidade: A utilização de um Load Balancer, Auto Scaling e RDS com replicação garante alta disponibilidade.
+Escalabilidade: O Auto Scaling permite escalar as instâncias EC2 de forma automática para atender à demanda. O RDS também oferece opções de escalabilidade para armazenar dados em crescimento.
+Segurança: O uso de VPCs, sub-redes, grupos de segurança e IAM garante a segurança dos recursos.
+SSO: A integração com um provedor de identidade como o AWS IAM ou um serviço de terceiros permite a autenticação SSO.
+Gateway: Um gateway de aplicação (como o AWS WAF) pode ser adicionado para filtrar o tráfego e proteger contra ataques.
+Próximos Passos:
+
+Detalhamento da solução: Definir o tipo de banco de dados RDS, o tamanho das instâncias EC2, a configuração do Auto Scaling, entre outros detalhes.
+Implementação: Criar os recursos na AWS utilizando a AWS Management Console, a AWS CLI ou a CloudFormation.
+Teste: Realizar testes de carga e stress para garantir o desempenho e a escalabilidade da solução.
+Observações:
+
+CRM: É importante considerar a integração com o sistema CRM existente, definindo os protocolos de comunicação e os dados que serão trocados.
+Regionalização: Para atender aos clientes em duas cidades, pode ser necessário criar duas VPCs separadas em regiões diferentes e utilizar o AWS Direct Connect ou VPN para conectar as redes locais às VPCs.
+Otimização de custos: Utilizar as instâncias EC2 com o tipo de instância e tamanho adequados para evitar custos desnecessários.
