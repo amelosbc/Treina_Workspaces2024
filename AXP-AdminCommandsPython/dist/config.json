@@ -1,0 +1,13 @@
+{
+    "api_url": "https://na.api.avayacloud.com",
+    "api_service_token": "/api/auth/v1/RDDNFT/protocol/openid-connect/token",
+    "api_service_adduser": "/api/admin/user/v1/accounts/RDDNFT/users",
+    "api_service_reasoncode": "/api/admin/reason-code/v1beta/accounts/RDDNFT/reason-codes",
+    "client_id": "seguros-atlas",
+    "client_secret": "YMN85CqygVCkfC6T67eNjD1ROGxRH8dA",
+    "grant_type": "password",
+    "username": "tadmin@segurosatlas.com.mx",
+    "password": "ipRG87),W)Lqvw1",
+    "appkey": "d53d2362d0ee4b1da3de1274c5518883",
+    "csv_file_path": "reasoncodes.csv"
+} 

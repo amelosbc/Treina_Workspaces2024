@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AXP Script Runner</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<body>
+    <h1>AXP Script Runner</h1>
+    <form action="/run_script" method="post" enctype="multipart/form-data">  </br>
+        CSV File: <input type="file" name="csv_file" required><br><br>
+        <input type="submit" value="Run Script">
+    </form>
+
+    <div id="results"></div>  </br>
+
+    <script>
+        const form = document.querySelector('form');
+        const resultsDiv = document.getElementById('results');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+            const formData = new FormData(form); // Very Important Line
+
+            try {
+                const response = await fetch('/run_script', { method: 'POST', body: formData });
+                const result = await response.json();
+                resultsDiv.innerHTML = JSON.stringify(result, null, 2); // Display results
+            } catch (error) {
+                resultsDiv.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

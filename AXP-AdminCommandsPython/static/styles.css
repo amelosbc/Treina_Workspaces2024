@@ -1,0 +1,52 @@
+body {
+    font-family: Verdana;  /* Modern font */
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* Center content */
+    min-height: 100vh;       /* Make the body fill the viewport */
+    margin: 0;               /* Remove default margins */
+    background-color: #f0f0f0; /* Example background */
+}
+
+h1 {
+    font-family: sans-serif; /* Modern font */
+    color: #555;          /* Dark gray text color */
+    text-align: center;    /* Center the heading */
+    margin-bottom: 20px;  /* Add some space below */
+}
+
+form {
+    width: 400px;        /* Set a fixed width */
+    margin: 0 auto;      /* Center the form horizontally */
+    padding: 20px;       /* Add some padding */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;   /* Rounded corners */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+
+input[type="file"],
+input[type="submit"] {
+    padding: 10px;
+    margin-bottom: 10px;  /* Space between fields */
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    background-color: #007bff; /* Blue background for submit button */
+    color: white;           /* White text */
+    border: none;           /* Remove default border */
+    cursor: pointer;       /* Change cursor on hover */
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover*/
+}
+
+#results {
+    margin-top: 20px;     /* Space above results */
+    font-family: monospace; /* Use a monospaced font for JSON */
+    white-space: pre-wrap;  /* Allow wrapping of long lines */
+}
+
